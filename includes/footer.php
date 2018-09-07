@@ -120,7 +120,24 @@
                  }
              });
          });
+         /*Edit Inventory*/
+         $(document).on('click', '.edit_p', function(){
+             var p_id = $(this).attr("id");
 
+             $.ajax({
+                 url:"fetch.php",
+                 method:"POST",
+                 data:{p_id:p_id},
+                 dataType:"json",
+                 success:function(data){
+                     // console.log(data);
+                     $('#id').val(data.id);
+                     $('#item').val(data.item);
+                     $('#quantity').val(data.quantity);
+                     $('#description').text(data.description);
+                 }
+             });
+         });
          /*Edit schedules*/
          $(document).on('click', '.edit_sc', function(){
              var sc_id = $(this).attr("id");
@@ -189,19 +206,16 @@
                  }
              });
          });
-         $(document).on('click', '.med_hsto', function(){
-             var sc_id = $(this).attr("id");
+         $(document).on('click', '.med_hst', function(){
+             var h_id = $(this).attr("id");
              $.ajax({
                  url:"fetch.php",
                  method:"POST",
-                 data:{sc_id:sc_id},
-                 dataType:"json",
+                 data:{h_id:h_id},
                  success:function(data){
-                     // console.log(data);
-                     $('#id').val(data.id);
-                     $('#student').val(data.student);
-                     $('#date').val(data.date);
-                     $('#notes').val(data.notes);
+                     $('#medical_detail').html(data);
+                     $('#histoModal').modal("show");
+
                  }
              });
          });

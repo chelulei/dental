@@ -76,3 +76,57 @@ if(isset($_POST['sv_id']))
 
 }
 
+
+if(isset($_POST['p_id']))
+{
+    $p_id=$_POST['p_id'];
+
+    $trm= mysqli_query($con,"SELECT * FROM inventory WHERE id = '$p_id'");
+
+    $rm = mysqli_fetch_array($trm);
+
+    echo json_encode($rm);
+
+}
+
+
+ if(isset($_POST["h_id"]))
+ {
+      $output = '';
+
+      $histo = "SELECT * FROM medication m  JOIN students s ON(m.student_id=s.id) 
+           JOIN inventory inv ONON(m.item_id=inv.id)
+             WHERE id = '".$_POST["h_id"]."'";
+
+      $res = mysqli_query($con, $histo);
+
+      $output .= '  
+      <div class="table-responsive">  
+           <table class="table table-bordered">';
+      while($row3 = mysqli_fetch_array($res))
+      {
+           $output .= ' 
+                 <tr>  
+                     <td width="30%"><label>Item</label></td>  
+                     <td width="70%">'.$row3["item"].'</td>  
+                </tr> 
+                  <tr>  
+                     <td width="30%"><label>Date</label></td>  
+                     <td width="70%">'.$row3["date"].'</td>  
+                </tr>  
+                <tr>  
+                     <td width="30%"><label>Name</label></td>  
+                     <td width="70%">'.$row3["last_name"].' '.$row3["first_name"].' ' .$row3["middle_name"].'</td>  
+                </tr>  
+                
+               
+                <tr>  
+                     <td width="30%"><label>Quantity</label></td>  
+                     <td width="70%">'.$row3["quantity"].'</td>  
+                </tr>
+                ';
+      }
+      $output .= "</table></div>";
+      echo $output;
+ }
+

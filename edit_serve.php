@@ -91,8 +91,8 @@ if(isset($_POST['id'])){
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>Cancel</button>
-                    <button type="submit" name="update" class="btn btn-primary"><i class="fa fa-save"></i>Save changes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+                    <button type="submit" name="update" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
                 </div>
             </form>
         </div>

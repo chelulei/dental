@@ -9,11 +9,10 @@ include 'connect.php';
 <div class="container">
     <br>
     <?php include 'errors.php';?>
-    <br><br>
+    <br>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        ADD SERVICE
+       <i class="fa fa-plus"></i>  ADD SERVICE
     </button>
-
 <!-- /.row -->
     <div class="card mt-3">
         <h5 class="card-header text-center">Treatment</h5>
@@ -117,7 +116,7 @@ include 'includes/footer.php';
                              <div class="col-md-6">
                                  <div class="form-group">
                                      <label for="">Treatment</label>
-                                     <input type="text" name="treat" id="" class="form-control">
+                                     <input type="text" name="treatment" id="" class="form-control">
                                      <!-- /# -->
                                  </div>
                                  <!-- /.form-group -->
@@ -153,8 +152,8 @@ include 'includes/footer.php';
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+                <button type="submit" name="save" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
             </div>
             </form>
         </div>

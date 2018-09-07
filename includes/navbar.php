@@ -25,8 +25,8 @@
                         View List
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="students.php">Students</a>
-                        <a class="dropdown-item" href="staff.php">Staff</a>
+                        <a class="dropdown-item" href="students.php"><i class="fa fa-user" aria-hidden="true"></i> Students</a>
+                        <a class="dropdown-item" href="staff.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Staff</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
