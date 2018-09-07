@@ -1,0 +1,7 @@
+<!--Main content Starts Here--> 
+	 <div id="main_content">
+	 <div id="content_area"> 
+       
+       appointments
+     </div>
+     </div>
