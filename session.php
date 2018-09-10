@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['id']) || (trim($_SESSION['id']) == '')) {
-    header("location: login.php");
-    exit();
+
+//if a session hasn't started is still not set, redirect to login page
+if (!isset($_SESSION['username'])) {
+
+    header('Location:index.php');
 }
-$session_id=$_SESSION['id'];
-?>

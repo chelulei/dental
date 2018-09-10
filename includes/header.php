@@ -1,3 +1,4 @@
+<?php include  'session.php';  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Welcome to solamillo</title>
+  <title>Welcome to Norsu Dental clinic</title>
   <link href="images/log.png" rel="icon">
   <!-- Bootstrap -->
     <link href='jquery-ui/jquery-ui.min.css' rel='stylesheet' type='text/css'>
@@ -16,14 +17,11 @@
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/sweetalert.min.css">
     <link rel="stylesheet" href="assets/css/image.css"
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="assets/bootstrap-select/css/bootstrap-select.min.css">
-
-
-<!--    <script src="tinymce/tinymce.min.js"></script>-->
-<!--    <script>tinymce.init({ selector:'textarea' });</script>-->
-
+    <script src="tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
+    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
+
 

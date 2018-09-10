@@ -1,17 +1,26 @@
 <?php
-include('session.php');
 include 'connect.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
+include 'functions.php';
 ?>
 
 <div class="container">
-    <br><br>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i>   ADD ITEMS
+            </button>
+        </div>
+        <!-- /.col-md-8 -->
+
+            <?php include 'clock.php';?>
+        </div>
+
     <?php include 'errors.php'; ?>
-    <br><br>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-     <i class="fa fa-plus"></i>   ADD ITEMS
-    </button>
+
+
     <div class="card mt-3">
         <h5 class="card-header text-center">list of Items</h5>
         <div class="card-body">
@@ -38,13 +47,22 @@ include 'includes/navbar.php';
                             <td><?php echo $row['quantity'];?></td>
                             <td><?php echo $row['description'];?></td>
                             <td>
-                                <div class="btn btn-group">
-                                    <button type="button" id="<?php echo $row['id'];?>" class="btn btn-outline-success give_med" data-toggle="modal" data-target="#giveModal">
-                                        <i class="fa fa-thumbs-o-up"></i> Give Med</button>
-                                    <button type="button" id="<?php echo $row['id'];?>" class="btn btn-outline-primary up_item" data-toggle="modal" data-target="#updateModal">
-                                        <i class="fa fa-edit"></i></button>
-                                    <button type="button" id="<?php echo $row['id'];?>" class="btn btn-outline-info med_hsto" data-toggle="modal" data-target="#histoModal">
-                                        <i class="fa fa-info"></i></button>
+
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-list" aria-hidden="true"></i> More Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-info edit_p" data-toggle="modal" data-target="#editModal">
+                                            <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Products</button>
+                                    <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-success give_med" data-toggle="modal" data-target="#giveModal">
+                                        <i class="fa fa-thumbs-o-up"></i> Give Medicine</button>
+                                    <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-primary up_item" data-toggle="modal" data-target="#updateModal">
+                                        <i class="fa fa-edit"></i> Update Quantity </button>
+                                    <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-info med_hst">
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i> Medical History</button>
+
+                                    </div>
                                 </div>
                                 <!-- /.btn btn-group -->
                                <?php include 'inventory_modals.php'?>

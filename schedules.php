@@ -1,27 +1,28 @@
 
 <?php
 include 'connect.php';
+include 'functions.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
 <div class="container">
-    <div class="row mt-5 ml-1">
+    <div class="row mt-3 ml-1">
         <div class="col-md-8">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus"></i> ADD SCHEDULE
-            </button></div>
-        <!-- /.col-md-8 -->
+            </button>
+        </div>
+        <!-- /.col-md-4 -->
+        <?php include 'clock.php';?>
     </div>
     <br>
-    <!-- /.row -->
     <?php include 'errors.php';?>
     <div class="card">
         <h5 class="card-header text-center">Schedules List</h5>
         <div class="card-body">
     <div class="row">
-
         <div class="col-md-12">
-            <table class="table table-hover" id="myTable">
+            <table class="table table-bordered" id="myTable">
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -32,23 +33,30 @@ include 'includes/navbar.php';
                 </thead>
                 <tbody>
                 <?php
-                $query = "SELECT * FROM `schedules`";
+                $query = "SELECT * FROM `schedules` s JOIN students st ON(s.student_id=st.id)";
                 $run= mysqli_query($con,$query);
                 while($row =mysqli_fetch_array($run)):
-                    $id=$row['id'];
+
                     ?>
                     <tr>
-                        <td><?php echo $row['student_id'];?></td>
-                        <td><?php echo $row['date'];?></td>
-                        <td><?php echo $row['notes'];?></td>
+
+                        <td><?php echo $row['first_name'].' '.$row['last_name'].' '.$row['middle_name'];?></td>
+                        <td><?php echo formatDate($row['date']);?></td>
                         <td>
-                            <div class="btn bt-group">
-                                <a href="#mediumModal" class="btn btn-outline-primary edit_sc"  id="<?php echo $id; ?>"   data-toggle="modal" data-target="#mediumModal"><i class=" fa fa-edit"></i> Edit </a>
-                                <a href="delete_schedule.php?delete=<?php echo $id;?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
-                            </div>
-                            <!-- /.btn bt-group -->
-                         <?php include 'edit_modal.php';?>
+                            <label><a href="#" class="hover_sc" id="<?php echo $row["sch_id"]; ?>">
+                                    <?php echo strip_tags(substr($row['notes'],0,200)); ?></a>
+                            </label>
                         </td>
+                        <td>
+                                <!-- /.btn btn-group -->
+                                <button type="button" id="<?php echo $row['sch_id'];?>"
+                                        class="btn btn-outline-primary ed_sc">
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i> EDIT</button>
+                                <a href="delete_schedule.php?delete=<?php echo $row['sch_id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
+                                <!-- /.btn bt-group -->
+
+                        </td>
+                        <?php include 'edit_modal.php';?>
                     </tr>
                 <?php endwhile;?>
                 </tbody>
@@ -69,11 +77,14 @@ include 'includes/footer.php';
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title text-center d-block " id="exampleModalLabel">
+                    ADD SCHEDULE
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
                 <form role="form" id="form" action="new_schedule.php" method="POST">
                     <div class="row">
@@ -108,8 +119,10 @@ include 'includes/footer.php';
                         <!-- /.col-md-4 -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Notes</label>
-                                <textarea class="form-control" rows="3" name="notes" required></textarea>
+                                <label for="">Notes</label>
+                                <textarea class="form-control" rows="3" name="notes">
+
+                                </textarea>
                                 <!-- /# -->
                             </div>
                         </div>
@@ -120,7 +133,9 @@ include 'includes/footer.php';
             <div class="modal-footer">
                 <input type="hidden" name="student_id" value="">
                 <button  class="btn btn-danger"  type="submit" name="save" data-dismiss="modal"><i class="fa fa-close"></i> CANCEL</button>
-                <button type="submit" name="save" id="save" class="btn btn-primary"> <i class="fa fa-save"></i> Save changes</button>
+                <button type="submit" name="save" id="save" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Save changes
+                </button>
             </div>
         </form
         </div>

@@ -1,4 +1,52 @@
 
+
+<script type="text/javascript">
+    var tday=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var tmonth=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    function GetClock(){
+        var d=new Date();
+        var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+        var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+        if(nhour==0){ap=" AM";nhour=12;}
+        else if(nhour<12){ap=" AM";}
+        else if(nhour==12){ap=" PM";}
+        else if(nhour>12){ap=" PM";nhour-=12;}
+
+        if(nmin<=9) nmin="0"+nmin;
+        if(nsec<=9) nsec="0"+nsec;
+
+        var clocktext=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
+        document.getElementById('clockbox').innerHTML=clocktext;
+    }
+
+    GetClock();
+    setInterval(GetClock,1000);
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logModalLabel">LOGOUT FORM</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-danger text-center">Are you sure you want to log out?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">NO</button>
+                <a href="logout.php"><button type="button" class="btn btn-primary btn-lg">YES</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
 <script src="jquery-ui/jquery-ui.js"></script>
 <!--<script src="assets/js/moment.min.js"></script>-->
@@ -9,12 +57,73 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/bootstrap-select/js/bootstrap-select.min.js"></script>
 <script src="assets/js/sweetalert.min.js"></script>
-
  <script>
      jQuery( document ).ready(function( $ ) {
-         /*time*/
+
+     //     /*menu hover*/
+         $(".dropdown").hover(
+             function() {
+                 $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
+                 $(this).toggleClass('open');
+                 $('b', this).toggleClass("caret caret-up");
+             },
+             function() {
+                 $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+                 $(this).toggleClass('open');
+                 $('b', this).toggleClass("caret caret-up");
+             });
+         /*menu hover*/
+
+         $('.hover_sc').tooltip({
+             title: fetchData,
+             html: true,
+             placement: 'right'
+         });
+
+         function fetchData()
+         {
+             var fetch_data = '';
+             var element = $(this);
+             var note_id = element.attr("id");
+             $.ajax({
+                 url:"fetch.php",
+                 method:"POST",
+                 async: false,
+                 data:{note_id:note_id},
+                 success:function(data)
+                 {
+                     fetch_data = data;
+                 }
+             });
+             return fetch_data;
+         }
 
 
+         $('.info').tooltip({
+             title: fetchD,
+             html: true,
+             placement: 'right'
+         });
+
+         function fetchD()
+         {
+             var fetch_d = '';
+             var element = $(this);
+             var inf_id = element.attr("id");
+             $.ajax({
+                 url:"fetch.php",
+                 method:"POST",
+                 async: false,
+                 data:{inf_id:inf_id},
+                 success:function(data)
+                 {
+                     fetch_d = data;
+                 }
+             });
+             return fetch_d;
+         }
+
+         /*End hover*/
          //Remove alert
          window.setTimeout(function() {
              $(".alert").fadeTo(500, 0).slideUp(500, function(){
@@ -120,21 +229,30 @@
                  }
              });
          });
+         /*Edit Inventory*/
+         $(document).on('click', '.edit_p', function(){
+             var p_id = $(this).attr("id");
 
+             $.ajax({
+                 url:"fetch.php",
+                 method:"POST",
+                 data:{p_id:p_id},
+                 success:function(data){
+                     $('#edit_product').html(data);
+                     $('#editModal').modal("show");
+                 }
+             });
+         });
          /*Edit schedules*/
-         $(document).on('click', '.edit_sc', function(){
-             var sc_id = $(this).attr("id");
+         $(document).on('click', '.ed_sc', function(){
+                 var sc_id = $(this).attr("id");
              $.ajax({
                  url:"fetch.php",
                  method:"POST",
                  data:{sc_id:sc_id},
-                 dataType:"json",
                  success:function(data){
-                     // console.log(data);
-                     $('#sch_id').val(data.id);
-                     $('#student').val(data.student_id);
-                     $('#date').val(data.date);
-                     $('#notes').text(data.notes);
+                     $('#edit').html(data);
+                     $('#mediumModal').modal("show");
                  }
              });
          });
@@ -145,16 +263,10 @@
                  url:"fetch.php",
                  method:"POST",
                  data:{sv_id:sv_id},
-                 dataType:"json",
                  success:function(data){
-                     // console.log(data);
-                     $('#s_id').val(data.id);
-                     $('#stude').val(data.student_id);
-                     $('#tooth').val(data.tooth);
-                     $('#treatment').val(data.treatment);
-                     $('#status').val(data.status);
-                     $('#notes').text(data.notes);
-                     $('#doctor').val(data.doctor)
+                      console.log(data);
+                     $('#edit_treat').html(data);
+                     $('#tModal').modal("show");
                  }
              });
          });
@@ -168,7 +280,7 @@
                  dataType:"json",
                  success:function(data){
                       console.log(data);
-                     $('#item_id').val(data.id);
+                     $('#item_id').val(data.inv_id);
                      $('#item').val(data.item);
 
                  }
@@ -183,25 +295,22 @@
                  dataType:"json",
                  success:function(data){
                      console.log(data);
-                     $('#it_d').val(data.id);
+                     $('#it_d').val(data.inv_id);
                      $('#itm').val(data.item);
                      $('#qty').val(data.quantity);
                  }
              });
          });
-         $(document).on('click', '.med_hsto', function(){
-             var sc_id = $(this).attr("id");
+         $(document).on('click', '.med_hst', function(){
+             var h_id = $(this).attr("id");
              $.ajax({
                  url:"fetch.php",
                  method:"POST",
-                 data:{sc_id:sc_id},
-                 dataType:"json",
+                 data:{h_id:h_id},
                  success:function(data){
-                     // console.log(data);
-                     $('#id').val(data.id);
-                     $('#student').val(data.student);
-                     $('#date').val(data.date);
-                     $('#notes').val(data.notes);
+                     $('#medical_detail').html(data);
+                     $('#histoModal').modal("show");
+
                  }
              });
          });

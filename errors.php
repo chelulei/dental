@@ -1,4 +1,7 @@
+
+<!-- /.row -->
 <!--Errors starts -->
+<div class="mt-3  text-center">
 <?php if(isset($_GET['success'])) : ?>
     <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -11,3 +14,4 @@
     </div>
 <?php else: echo ''; endif; ?>
 <!-- end errors -->
+</div>

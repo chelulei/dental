@@ -1,73 +1,59 @@
-<?php
-$error ='';
-include 'includes/head.php';
-include 'connect.php';
-
-if (isset($_POST['login'])) {
-session_start();
- $username = $_POST['username'];
-$password = $_POST['password'];
-$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-$result = mysqli_query($con,$query);
-$num_row = mysqli_num_rows($result);
-    $row=mysqli_fetch_array($result);
-    if( $num_row > 0 ) {
-      header('location:index.php');
-  $_SESSION['id']=$row['id'];
-
- }else{
-        $error = '<div class="alert alert-danger">
- <a href="#" class="close" data-dismiss="alert">&times;</a>
-<p class="text-center">Error: username or password is incorrect!</p>
-
-</div>'; }
-
-
-}
-
-?><nav class="navbar navbar-custom navbar-static-top">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Norsu</title>
+    <link href="images/log.png" rel="icon">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <style>
+        body{
+            background-image: url("images/bg.png");
+        }
+    </style>
+</head>
+<body id="login">
+<nav class="navbar navbar-dark bg-primary fixed-top">
+<header class="p-4"></header>
 </nav>
     <div class="container">
-        <div class="div" style="margin-top: 100px;"></div>
-        <!-- /.div -->
-        <div class="row">
-            <div class="col-md-offset-4 col-md-5">
-                <form action="" method="POST">
-                <?php echo $error;?>
-                <div class="form-login">
-                    <h4>Please Login</h4>
+       <div class="row">
+<!--           <img src="images/ban.png" class="img-fluid img-polaroid" alt="Responsive image" id="ban">-->
+       </div>
+       <!-- /.row -->
+        <div class="row mt-4">
+            <div class="col-md-4"></div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <?php include 'errors.php';?>
+                <form  id="login_form" class="form-signin"  action="log_in.php" method="POST">
+
+                        <h3 class="form-signin-heading"><i class="fa fa-lock"></i> Please Login</h3>
+                     <div class="form-group">
+                         <input type="text" class="form-control"  name="username" placeholder="Username" required>
+                     </div>
+                     <!-- /.form-group -->
                     <div class="form-group">
-                        <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <input type="text"  name="username" id="userName" class="form-control  chat-input" placeholder="username" />
-                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
                     </div>
                     <!-- /.form-group -->
-
-                    <div class="form-group">
-                        <div class="input-group">
-                             <span class="input-group-addon">
-                                   <i class="glyphicon glyphicon-lock"></i>
-                            </span>
-                        <input type="password"  name="password" id="userPassword" class="form-control  chat-input" placeholder="password" />
-                        </div>
-                        </div>
-                    <!-- /.form-group -->
-                    <div class="form-group">
-                        <button type="submit" name="login" class="btn btn-primary btn-block">
-                            <i class="glyphicon glyphicon-log-in"></i>
-                            Login
+                        <button class="btn btn-block btn-primary" name="login" type="submit">
+                            <i class="fa fa-sign-in"></i> Sign in
                         </button>
-                    </div>
 
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
-    </div>
+<footer>
+    <p class="text-center">All Rights Reserved 2018</p>
+</footer>
+<script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 
-<?php
-include 'includes/footer.php';
-?>
+</body>
+</html>

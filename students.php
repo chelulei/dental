@@ -1,12 +1,21 @@
 <?php
-include('session.php');
 include 'connect.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
 
 <div class="container">
-    <div class="wrapper mt-3"></div>
+
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <a href="register_students.php"><button type="button" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>   ADD STUDENT
+                </button></a>
+        </div>
+        <!-- /.col-md-8 -->
+
+        <?php include 'clock.php';?>
+    </div>
     <!-- /.wrapper -->
     <?php include 'errors.php'; ?>
     <div class="card mt-3">

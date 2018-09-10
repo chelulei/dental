@@ -5,7 +5,7 @@ if (isset($_POST['save'])) {
 
     $student=$_POST['student'];
     $tooth=$_POST['tooth'];
-    $treatment=$_POST['treat'];
+    $treatment=$_POST['treatment'];
     $status=$_POST['status'];
     $notes=$_POST['notes'];
     $doctor=$_POST['doctor'];

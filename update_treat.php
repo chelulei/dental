@@ -17,7 +17,7 @@ if (isset($_POST['update'])) {
                 treatment='$treatment',
                 status='$status',
                 doctor='$doctor'
-              WHERE id='$id'";
+              WHERE t_id='$id'";
 
     $run=mysqli_query($con,$update);
 
@@ -32,7 +32,6 @@ if (isset($_POST['update'])) {
         $query = array(
             'error' =>'There was an Error! please try again',
         );
-
         $query = http_build_query($query);
         header("Location:treatment.php?$query");
     }

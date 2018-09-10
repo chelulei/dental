@@ -1,33 +1,35 @@
-<?php include('session.php'); ?>
+
 <?php
+include 'connect.php';
+include 'functions.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
-include 'includes/header.php';
-include 'connect.php';
 ?>
 
 <div class="container">
-    <br>
     <?php include 'errors.php';?>
-    <br><br>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        ADD SERVICE
-    </button>
-
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i> ADD SERVICE
+            </button>
+        </div>
+        <!-- /.col-md-8 -->
+            <?php include 'clock.php';?>
+    </div>
+    <!-- /.row -->
+    <br>
 <!-- /.row -->
-    <div class="card mt-3">
-        <h5 class="card-header text-center">Treatment</h5>
-        <div class="card-body">
       <div class="row">
           <div class="col-md-12">
-          <table class="table">
+          <table class="table table-bordered" id="myTable">
               <thead>
               <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Tooth</th>
-                  <th scope="col">Treatment</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Notes</th>
+<!--                  <th scope="col">Treatment</th>-->
+<!--                  <th scope="col">Status</th>-->
+<!--                  <th scope="col">Notes</th>-->
                   <th scope="col">Date</th>
                   <th scope="col">By</th>
                   <th scope="col">Action</th>
@@ -37,22 +39,30 @@ include 'connect.php';
               <tr>
 
                   <?php
-                  $query = "SELECT * FROM `treatment`";
+                  $query = "SELECT * FROM `treatment` t JOIN students s ON(t.student_id=s.id)";
                   $run= mysqli_query($con,$query);
                   while($row =mysqli_fetch_array($run)):
-                  $id=$row['id'];
+                  $id=$row['t_id'];
                   ?>
-                  <td><?php echo $row['student_id'];?></td>
+                  <td>
+                      <label>
+                          <a href="#" class="info" id="<?php echo $row["t_id"]; ?>">
+                              <?php echo $row['last_name'].' '.$row['first_name'].' '.$row['middle_name'];?></a>
+                      </label>
+
+                  </td>
                   <td><?php echo $row['tooth'];?></td>
-                  <td><?php echo $row['treatment'];?></td>
-                  <td><?php echo $row['status'];?></td>
-                  <td><?php echo $row['notes'];?></td>
-                  <td><?php echo $row['date'];?></td>
+<!--                  <td>--><?php //echo $row['treatment'];?><!--</td>-->
+<!--                  <td>--><?php //echo $row['status'];?><!--</td>-->
+<!--                  <td>--><?php //echo $row['notes'];?><!--</td>-->
+                  <td><?php echo formatDate($row['date']);?></td>
                   <td><?php echo $row['doctor'];?></td>
                   <td>
                       <div class="btn bt-group">
-                          <a href="#mediumModal" class="btn btn-outline-primary edit_tr"  id="<?php echo $id;?>"   data-toggle="modal" data-target="#mediumModal"><i class=" fa fa-edit"></i> Edit </a>
-                          <a href="delete_treat.php?delete=<?php echo $row['id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
+                          <button type="button" id="<?php echo $row['t_id'];?>"
+                                  class="btn btn-outline-primary edit_tr">
+                              <i class="fa fa-pencil-square" aria-hidden="true"></i> EDIT</button>
+                          <a href="delete_treat.php?delete=<?php echo $row['t_id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
                       </div>
                       <!-- /.btn bt-group -->
                       <?php include 'edit_serve.php';?>
@@ -60,13 +70,9 @@ include 'connect.php';
 
               </tr>
               <?php endwhile;?>
-              </tr>
               </tbody>
           </table>
-          </div>
-          <!-- /.col-md-12 -->
         </div>
-    </div>
     </div>
     <!-- /.row -->
 </div>
@@ -117,7 +123,7 @@ include 'includes/footer.php';
                              <div class="col-md-6">
                                  <div class="form-group">
                                      <label for="">Treatment</label>
-                                     <input type="text" name="treat" id="" class="form-control">
+                                     <input type="text" name="treatment" id="" class="form-control">
                                      <!-- /# -->
                                  </div>
                                  <!-- /.form-group -->
@@ -153,8 +159,8 @@ include 'includes/footer.php';
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+                <button type="submit" name="save" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
             </div>
             </form>
         </div>

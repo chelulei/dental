@@ -1,17 +1,21 @@
-<?php include('session.php'); ?>
+
 <?php
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
 
 <div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8">
+        </div>
+        <?php include 'clock.php';?>
+    </div>
         <?php include 'errors.php'; ?>
     <div class="card mt-3">
         <h5 class="card-header text-center">Students' Registration Form</h5>
         <div class="card-body">
     <div class="row">
         <div class="col-md-12">
-            <form action="new_student.php" method="POST">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -71,7 +75,7 @@ include 'includes/navbar.php';
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Birthday</label>
-                            <input type="text"    name="bday" class="form-control" id="datepicker" placeholder="BirthDay" required>
+                            <input type="date"    name="bday" class="form-control"  placeholder="BirthDay" required>
                         </div>
                     </div>
                     <!-- /.col-md-4 -->
@@ -85,10 +89,8 @@ include 'includes/navbar.php';
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="">Gender</label>
-                            <select name="gender" required=""
-                                    data-size="7" data-live-search="true" class=" form-control selectpicker btn-primary fill_selectbtn_in own_selectbox"
-                                    data-title="--Select Gender---" id="state_list" data-width="100%">
-                                <option value="" class="hidden"></option>
+                            <select name="gender"   class="form-control" required="">
+                                <option value="">--Choose Gender---</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
                             </select>

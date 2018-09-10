@@ -1,11 +1,19 @@
 <?php
-include('session.php');
 include 'connect.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
 <div class="container">
-    <br>
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <a href="register_staff.php"><button type="button" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>   ADD STAFF
+                </button></a>
+        </div>
+        <!-- /.col-md-8 -->
+
+        <?php include 'clock.php';?>
+    </div>
     <?php include 'errors.php';?>
     <div class="card mt-3">
     <h5 class="card-header text-center">List Of Staff</h5>
