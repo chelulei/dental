@@ -7,9 +7,12 @@ include 'includes/navbar.php';
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-8">
+            <a href="staff.php" class="btn btn-primary"><i class="fa fa-search">VIEW STAFF</i></a>
         </div>
         <?php include 'clock.php';?>
     </div>
+    <?php include 'errors.php'; ?>
+
     <div class="card mt-3">
         <h5 class="card-header text-center">Staff/ Employee Registration Form</h5>
         <div class="card-body">
@@ -74,7 +77,7 @@ include 'includes/navbar.php';
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Birthday</label>
-                        <input type="text" name="bday" class="form-control" id="datepicker" placeholder="BirthDay"
+                        <input type="date" name="bday" class="form-control"  placeholder="BirthDay"
                                required>
                     </div>
                 </div>

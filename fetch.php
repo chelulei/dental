@@ -72,48 +72,210 @@ if(isset($_POST['sc_id'])){
 
 if(isset($_POST['st_id']))
 {
-$id=$_POST['st_id'];
+    $output = '';
 
-$sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$id'");
+    $st_id=$_POST['st_id'];
 
-$row = mysqli_fetch_array($sql);
-echo json_encode($row);
+$sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$st_id'");
+
+    while($row = mysqli_fetch_array($sql)) {
+        $output = '
+       <div class="col-md-3">'?>
+
+           <?php include 'image.php';?>
+
+        </div>
+
+        <?php  $output .= ' 
+        <div class="col-md-9">
+          <input type="hidden" name="stud_id"  value="'.$row["id"].'"/>
+            <b>Name:</b> '.$row["last_name"].' '.$row["first_name"].' '.$row["middle_name"].'<br>
+            </hr>
+            <b>Admin No:</b>  '.$row["admno"].'<br>
+            <b>Birthday:</b>'.$row["bday"].'<br>
+            <b>Age:</b> '.$row["bday"].'<br>
+            <b>Gender:</b> '.$row["gender"].' <br>
+            <b>Course:</b> '.$row["course"].' <br>
+            <b>Contact #:</b>  '.$row["contact_number"].'<br>
+            <b>Contact Person:</b>'.$row["contact_person"].'<br>
+         </div>
+         <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td> <b>Personal Information: </b></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>patient name:</td>
+                        <td> Amir Mostafa</td>
+                      </tr>
+                      <tr>
+                        <td>Age:</td>
+                        <td>20</td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                        <td>Gender:</td>
+                        <td> M</td>
+                      </tr>
+                        <tr>
+                        <td>Address:</td>
+                        <td>cairo</td>
+                      </tr>
+                      <tr>
+                        <td>Mobile:</td>
+                        <td>555555</td>
+                      </tr>
+                        <td>Job:</td>
+                        <td> h </td>
+                           
+                      </tr>
+                     
+                       </tr>
+                        <td>Marital Status:</td>
+                        <td> s </td>
+                    </tbody>
+                  </table>
+
+';
+    }
+    echo $output;
+
+
 }
 
 
 if(isset($_POST['stf_id']))
 {
-$id=$_POST['stf_id'];
 
-$cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$id'");
+  $output = '';
 
-$rows = mysqli_fetch_array($cat);
-echo json_encode($rows);
+$sf_id=$_POST['stf_id'];
+
+$cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
+
+
+  while($rows = mysqli_fetch_array($cat)) {
+        $output = '
+    <table style="border: none; width: 100%;">
+        <tbody>
+          <tr>
+            <td>
+           <?php
+            '; include 'image-teach.php';?>
+           <?php  $output .= ' 
+            </td>
+            </tr>
+            
+            <tr>
+            <td width="250px">
+                <input type="hidden" name="id" value="'.$rows["id"].'">
+                <b>Name:</b> '.$rows["last_name"].'  '.$rows["first_name"].' '.$rows["middle_name"].'<br>
+                <b>Admin No:</b> '.$rows["staff_no"].'<br>
+                <b>Birthday:</b>'.$rows["bday"].'<br>
+                <b>Age:</b> '.$rows["age"].'<br>
+                <b>Gender:</b>  '.$rows["gender"].'<br>
+                <b>Course:</b> '.$rows["department"].'<br>
+                    <b>Contact Person:</b>'.$rows["contact_no"].' <br>
+            </td>
+        </tr>
+        </tbody>
+
+';
+    }
+    echo $output;
+
 
 }
 
 
 if(isset($_POST['g_id']))
 {
-$id=$_POST['g_id'];
 
-$grp= mysqli_query($con,"SELECT * FROM inventory WHERE inv_id = '$id'");
+    $output = '';
 
-$rs = mysqli_fetch_array($grp);
-echo json_encode($rs);
+    $inv_id=$_POST['g_id'];
+
+$grp= mysqli_query($con,"SELECT * FROM inventory WHERE inv_id = '$inv_id'");
+
+    while($rs = mysqli_fetch_array($grp)) {
+        $output = '
+
+                <div class="form-group">
+                    <select name="student" class="form-control">
+                        <option value="">--SELECT STUDENTS----</option>
+                     '?>
+                        <?php
+
+                      $sql="SELECT * FROM students";
+                        $runs= mysqli_query($con,$sql);
+                        while ($rows= mysqli_fetch_array($runs)):
+                            ?>
+                            <?php $output .= "<option value='{$rows['id']}'}>
+                         {$rows['last_name']} {$rows['first_name']} {$rows['middle_name']}
+                         
+                    </option>";
+                         endwhile;
+                        ?>
+
+               <?php  $output .= ' 
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Item ID</label>
+                        <input type="number"  name="item_id" class="form-control" value="'.$rs["inv_id"].'">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Name</label>
+                        <input type="text" class="form-control" name="item" id="item" value="'.$rs["item"].'">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">How many</label>
+                    <input type="number" class="form-control" name="quantity" id="quantity" placeholder="quantity">
+                </div>
+            </div>
+
+    ';
+    }
+    echo $output;
+
+
 }
 
-
-if(isset($_POST['up_id']))
+if(isset($_POST['qty_id']))
 {
-    $item_id=$_POST['up_id'];
+    $qty_id=$_POST['qty_id'];
 
-    $itm= mysqli_query($con,"SELECT * FROM inventory WHERE inv_id = '$item_id'");
+    $itm= mysqli_query($con,"SELECT * FROM inventory WHERE inv_id ='$qty_id'");
 
-    $r = mysqli_fetch_array($itm);
+ while($rt = mysqli_fetch_array($itm)) {
 
-    echo json_encode($r);
-
+        $output = '
+     <div class="form-row">
+                <div class="form-group col-md-4">
+            <input type="hidden"   name="item_id" class="form-control" value="'.$rt["inv_id"].'">  
+                    <label for="inputEmail4">Item ID</label>
+                    <input type="text"   name="item_id" class="form-control" value="'.$rt["inv_id"].'" readonly>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Name</label>
+                    <input type="text" class="form-control" name="item" value="'.$rt["item"].'" readonly>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Current Quantity</label>
+                    <input type="text"  class="form-control"  value="'.$rt["quantity"].'"readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Add Quantity</label>
+                <input type="number" class="form-control" name="qty" id="quantity" placeholder="quantity">
+            </div>';
+   }
+    echo $output;
 }
 
 
@@ -240,17 +402,18 @@ if(isset($_POST['p_id']))
 }
 
 
- if(isset($_POST["h_id"]))
- {
-      $output = '';
+ if(isset($_POST["h_id"])) {
+     $output = '';
 
-      $histo = "SELECT * FROM medication m JOIN students s ON(m.student_id=s.id)
+     $h_id = $_POST["h_id"];
+
+     $histo = "SELECT * FROM medication m JOIN students s ON(m.student_id=s.id)
                        JOIN inventory n ON(m.item_id=n.inv_id)
-             WHERE item_id = '".$_POST["h_id"]."'";
+             WHERE item_id ='$h_id'";
 
-      $res = mysqli_query($con, $histo);
+     $res = mysqli_query($con, $histo);
 
-      $output .= '  
+     $output .= '  
       <div class="table-responsive">  
            <table class="table table-bordered">
            <thead>
@@ -263,22 +426,31 @@ if(isset($_POST['p_id']))
           </thead>
            
            ';
-
-      while($row3 = mysqli_fetch_array($res))
-      {
-           $output .= '
+     if (mysqli_num_rows($res) > 0) {
+         while ($row3 = mysqli_fetch_array($res)) {
+             $output .= '
                  <tr> 
-                     <td>'.$row3["item"].'</td>
-                     <td>'.formatDate($row3["date"]).'</td>
-                     <td>'.$row3["last_name"].' '.$row3["first_name"].' ' .$row3["middle_name"].'</td>
-                     <td>'.$row3["qty"].'</td>  
+                     <td>' . $row3["item"] . '</td>
+                     <td>' . formatDate($row3["date"]) . '</td>
+                     <td>' . $row3["last_name"] . ' ' . $row3["first_name"] . ' ' . $row3["middle_name"] . '</td>
+                     <td>' . $row3["qty"] . '</td>  
                 </tr>
                 ';
-      }
-      $output .= "</table></div>";
-      echo $output;
- }
+         }
 
+     }else
+     {
+         $output .= '<tr>  
+                          <td colspan="4">Data not Found</td>  
+                     </tr>';
+     }
+     $output .= '</table> 
+
+      </div>';
+
+     echo $output;
+
+ }
 /*hover fetch*/
 
 if(isset($_POST["note_id"]))
@@ -323,3 +495,44 @@ if(isset($_POST["inf_id"]))
 
 ?>
 
+<script>
+    $(document).ready(function () {
+        //If image edit link is clicked
+        $(".editLink").on('click', function(e){
+            e.preventDefault();
+            $("#fileInput:hidden").trigger('click');
+        });
+
+        //On select file to upload
+        $("#fileInput").on('change', function(){
+            var image = $('#fileInput').val();
+            var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+            //validate file type
+            if(!img_ex.exec(image)){
+                alert('Please upload only .jpg/.jpeg/.png/.gif file.');
+                $('#fileInput').val('');
+                return false;
+            }else{
+                $('.uploadProcess').show();
+                $('#uploadForm').hide();
+                $( "#picUploadForm" ).submit();
+            }
+        });
+    });
+
+    //After completion of image upload process
+    function completeUpload(success, fileName) {
+        if(success == 1){
+            $('#imagePreview').attr("src", "");
+            $('#imagePreview').attr("src", fileName);
+            $('#fileInput').attr("value", fileName);
+            $('.uploadProcess').hide();
+        }else{
+            $('.uploadProcess').hide();
+            alert('There was an error during file upload!');
+        }
+        return true;
+    }
+
+</script>

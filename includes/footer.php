@@ -138,7 +138,6 @@
 
 
          $("#datepicker").datepicker({  showOtherMonths:true});
-
          $('#myTable').DataTable();
 
 
@@ -186,20 +185,10 @@
                  url:"fetch.php",
                  method:"POST",
                  data:{stf_id:stf_id},
-                 dataType:"json",
                  success:function(data){
                      // console.log(data);
-                     $('#id').val(data.id);
-                     $('#staff_no').text(data.staff_no);
-                     $('#lastname').text(data.last_name);
-                     $('#firstname').text(data.first_name);
-                     $('#lastname').text(data.last_name);
-                     $('#middlename').text(data.middle_name);
-                     $('#department').text(data.department);
-                     $('#gender').text(data.gender);
-                     $('#bday').text(data.bday);
-                     $('#age').text(data.age);
-                     $('#contact').text(data.contact_no);
+                     $('#edit_staff').html(data);
+                     $('#staffModal').modal("show");
                  }
              });
          });
@@ -211,21 +200,9 @@
                  url:"fetch.php",
                  method:"POST",
                  data:{st_id:st_id},
-                 dataType:"json",
                  success:function(data){
-                     // console.log(data);
-                     $('#id').val(data.id);
-                     $('#admno').text(data.admno);
-                     $('#course').text(data.course);
-                     $('#year').text(data.year);
-                     $('#last_name').text(data.last_name);
-                     $('#first_name').text(data.first_name);
-                     $('#middle_name').text(data.middle_name);
-                     $('#bday').text(data.bday);
-                     $('#age').text(data.age);
-                     $('#gender').text(data.gender);
-                     $('#contact_number').text(data.contact_number);
-                     $('#contact_person').text(data.contact_person);
+                     $('#edit_student').html(data);
+                     $('#studentModal').modal("show");
                  }
              });
          });
@@ -277,40 +254,34 @@
                  url:"fetch.php",
                  method:"POST",
                  data:{g_id:g_id},
-                 dataType:"json",
                  success:function(data){
-                      console.log(data);
-                     $('#item_id').val(data.inv_id);
-                     $('#item').val(data.item);
-
+                     $('#givemed').html(data);
+                     $('#giveModal').modal("show");
                  }
              });
          });
-         $(document).on('click', '.up_item', function(){
-             var up_id = $(this).attr("id");
+         $(document).on('click', '.ed_qty', function(){
+             var qty_id = $(this).attr("id");
              $.ajax({
                  url:"fetch.php",
                  method:"POST",
-                 data:{up_id:up_id},
-                 dataType:"json",
+                 data:{qty_id:qty_id},
                  success:function(data){
-                     console.log(data);
-                     $('#it_d').val(data.inv_id);
-                     $('#itm').val(data.item);
-                     $('#qty').val(data.quantity);
+                     $('#edit_qty').html(data);
+                     $('#qtyModal').modal('show');
                  }
              });
          });
-         $(document).on('click', '.med_hst', function(){
+
+         $('.history_med').click(function(){
              var h_id = $(this).attr("id");
              $.ajax({
                  url:"fetch.php",
-                 method:"POST",
+                 method:"post",
                  data:{h_id:h_id},
                  success:function(data){
-                     $('#medical_detail').html(data);
+                     $('#history').html(data);
                      $('#histoModal').modal("show");
-
                  }
              });
          });

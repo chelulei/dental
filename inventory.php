@@ -55,14 +55,14 @@ include 'functions.php';
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-info edit_p" data-toggle="modal" data-target="#editModal">
                                             <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Products</button>
-                                    <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-success give_med" data-toggle="modal" data-target="#giveModal">
+                                    <button type="button"  id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-success give_med">
                                         <i class="fa fa-thumbs-o-up"></i> Give Medicine</button>
-                                    <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-primary up_item" data-toggle="modal" data-target="#updateModal">
-                                        <i class="fa fa-edit"></i> Update Quantity </button>
-                                    <button type="button" id="<?php echo $row['inv_id'];?>" class="dropdown-item btn btn-outline-info med_hst">
+                                        <button type="button" id="<?php echo $row['inv_id'];?>"
+                                                class="dropdown-item btn btn-outline-primary ed_qty">
+                                            <i class="fa fa-pencil-square" aria-hidden="true"></i> Update Quantity</button>
+                                    <button type="button" id="<?php echo $row['inv_id'];?>"
+                                            class="dropdown-item btn btn-outline-primary history_med">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i> Medical History</button>
-
-                                    </div>
                                 </div>
                                 <!-- /.btn btn-group -->
                                <?php include 'inventory_modals.php'?>
@@ -135,3 +135,25 @@ include 'includes/footer.php';
     </div>
 </div>
 
+<!-- History -->
+
+<div class="modal fade" id="histoModal" tabindex="-1" role="dialog" aria-labelledby="histoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="histoModalLabel">Medical Hostory</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="history"></div>
+                <!-- /#medical_detail -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+            </div>
+        </div>
+    </div>
+</div>

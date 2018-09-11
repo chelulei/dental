@@ -3,8 +3,8 @@ if(isset($_POST['stud_id'])):
     $id=$_POST['stud_id'];
 endif;
 
-if(isset($_POST['staff_id'])):
-    $up_id=$_POST['staff_id'];
+if(isset($_POST['up_id'])):
+    $up_id=$_POST['up_id'];
 endif;
 
 if(!empty($_FILES['picture']['name'])){
@@ -12,7 +12,7 @@ if(!empty($_FILES['picture']['name'])){
     include_once 'connect.php';
     //File uplaod configuration
     $result = 0;
-    $uploadDir = "images/";
+    $uploadDir = "images/avatar/";
     $fileName = time().'_'.basename($_FILES['picture']['name']);
     $targetPath = $uploadDir. $fileName;
     //Upload file to server
@@ -23,7 +23,7 @@ if(!empty($_FILES['picture']['name'])){
         if($id){
             $update = mysqli_query($con,"UPDATE students SET image = '".$fileName."' WHERE id ='$id' ");
         }elseif($up_id){
-            $update = mysqli_query($con,"UPDATE teacher SET image = '".$fileName."' WHERE Idno ='$up_id' ");
+            $update = mysqli_query($con,"UPDATE staff SET image = '".$fileName."' WHERE id ='$up_id' ");
         }
 
         //Update status

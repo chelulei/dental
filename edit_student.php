@@ -3,7 +3,7 @@ include('connect.php');
 include 'includes/header.php';
 include 'includes/navbar.php';
 if (isset($_POST['update'])) {
-    $id=$_POST['id'];
+    $id=$_POST['stud_id'];
 
     $result = "SELECT * FROM students WHERE id ='$id'";
     $select=mysqli_query($con,$result);

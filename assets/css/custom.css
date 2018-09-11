@@ -31,7 +31,10 @@ body{
     color:red !important;
 
 }
+.navbar-brand{
 
+    color:#FFFFFF;
+}
 
 .caret-up {
     width: 0;
@@ -43,4 +46,8 @@ body{
     display: inline-block;
     margin-left: 2px;
     vertical-align: middle;
+}
+
+.modal-open .navbar-fixed-top {
+    right: 0px !important;
 }

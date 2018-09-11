@@ -49,7 +49,7 @@ include 'includes/navbar.php';
                     <td><?php echo $row['gender'];?></td>
                     <td>
                         <button class="btn btn-outline-primary staff_info"  id="<?php echo $id; ?>"
-                           data-toggle="modal" data-target="#staffModal">
+                          >
                             <i class="fa fa-search"></i> VIEW DETAILS </button>
                <?php include 'staff_modal.php'?>
                  </td>

@@ -1,6 +1,6 @@
 
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#" style="color: #FFFFFF;">NORSU</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
