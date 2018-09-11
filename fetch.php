@@ -72,23 +72,77 @@ if(isset($_POST['sc_id'])){
 
 if(isset($_POST['st_id']))
 {
-$id=$_POST['st_id'];
+    $output = '';
 
-$sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$id'");
+    $st_id=$_POST['st_id'];
 
-$row = mysqli_fetch_array($sql);
-echo json_encode($row);
+$sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$st_id'");
+
+    while($row = mysqli_fetch_array($sql)) {
+        $output = '
+       <div class="col-md-4">
+            <?php
+            ';
+             include 'image.php';?>
+       </div>
+        <?php  $output .= ' 
+        <div class="col-md-8">
+          <input type="hidden" name="stud_id"  value="'.$row["id"].'"/>
+            <b>Name:</b> '.$row["last_name"].' '.$row["first_name"].' '.$row["middle_name"].'<br>
+            <b>Admin No:</b>  '.$row["admno"].'<br>
+            <b>Birthday:</b>'.$row["bday"].'<br>
+            <b>Age:</b> '.$row["bday"].'<br>
+            <b>Gender:</b> '.$row["gender"].' <br>
+            <b>Course:</b> '.$row["course"].' <br>
+            <b>Contact #:</b>  '.$row["contact_number"].'<br>
+            <b>Contact Person:</b>'.$row["contact_person"].'<br>
+         </div>
+
+';
+    }
+    echo $output;
+
+
 }
 
 
 if(isset($_POST['stf_id']))
 {
-$id=$_POST['stf_id'];
+$sf_id=$_POST['stf_id'];
 
-$cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$id'");
+$cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
 
-$rows = mysqli_fetch_array($cat);
-echo json_encode($rows);
+
+  while($rows = mysqli_fetch_array($cat)) {
+        $output = '
+    <table style="border: none; width: 100%;">
+        <tbody>
+          <tr>
+            <td>
+           <?php
+            '; include 'image-teach.php';?>
+           <?php  $output .= ' 
+            </td>
+            </tr>
+            
+            <tr>
+            <td width="250px">
+                <input type="hidden" name="id" value="'.$rows["id"].'">
+                <b>Name:</b> '.$rows["last_name"].'  '.$rows["first_name"].' '.$rows["middle_name"].'<br>
+                <b>Admin No:</b> '.$rows["staff_no"].'<br>
+                <b>Birthday:</b>'.$rows["bday"].'<br>
+                <b>Age:</b> '.$rows["age"].'<br>
+                <b>Gender:</b>  '.$rows["gender"].'<br>
+                <b>Course:</b> '.$rows["department"].'<br>
+                    <b>Contact Person:</b>'.$rows["contact_no"].' <br>
+            </td>
+        </tr>
+        </tbody>
+
+';
+    }
+    echo $output;
+
 
 }
 
@@ -323,3 +377,44 @@ if(isset($_POST["inf_id"]))
 
 ?>
 
+<script>
+    $(document).ready(function () {
+        //If image edit link is clicked
+        $(".editLink").on('click', function(e){
+            e.preventDefault();
+            $("#fileInput:hidden").trigger('click');
+        });
+
+        //On select file to upload
+        $("#fileInput").on('change', function(){
+            var image = $('#fileInput').val();
+            var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+            //validate file type
+            if(!img_ex.exec(image)){
+                alert('Please upload only .jpg/.jpeg/.png/.gif file.');
+                $('#fileInput').val('');
+                return false;
+            }else{
+                $('.uploadProcess').show();
+                $('#uploadForm').hide();
+                $( "#picUploadForm" ).submit();
+            }
+        });
+    });
+
+    //After completion of image upload process
+    function completeUpload(success, fileName) {
+        if(success == 1){
+            $('#imagePreview').attr("src", "");
+            $('#imagePreview').attr("src", fileName);
+            $('#fileInput').attr("value", fileName);
+            $('.uploadProcess').hide();
+        }else{
+            $('.uploadProcess').hide();
+            alert('There was an error during file upload!');
+        }
+        return true;
+    }
+
+</script>

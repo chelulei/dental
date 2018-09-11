@@ -7,6 +7,7 @@ include 'includes/navbar.php';
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-8">
+            <a href="students.php" class="btn btn-primary"><i class="fa fa-search">VIEW STUDENTS</i></a>
         </div>
         <?php include 'clock.php';?>
     </div>

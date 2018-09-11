@@ -20,7 +20,7 @@ if(isset($_POST['login'])) {
 if ($count > 0) {
 
     $_SESSION['username'] = $row['username'];
-    header('location:index.php');
+    header('location:home.php');
 
     }else{
 

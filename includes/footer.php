@@ -138,7 +138,6 @@
 
 
          $("#datepicker").datepicker({  showOtherMonths:true});
-
          $('#myTable').DataTable();
 
 
@@ -186,20 +185,10 @@
                  url:"fetch.php",
                  method:"POST",
                  data:{stf_id:stf_id},
-                 dataType:"json",
                  success:function(data){
                      // console.log(data);
-                     $('#id').val(data.id);
-                     $('#staff_no').text(data.staff_no);
-                     $('#lastname').text(data.last_name);
-                     $('#firstname').text(data.first_name);
-                     $('#lastname').text(data.last_name);
-                     $('#middlename').text(data.middle_name);
-                     $('#department').text(data.department);
-                     $('#gender').text(data.gender);
-                     $('#bday').text(data.bday);
-                     $('#age').text(data.age);
-                     $('#contact').text(data.contact_no);
+                     $('#edit_staff').html(data);
+                     $('#staffModal').modal("show");
                  }
              });
          });
@@ -211,21 +200,9 @@
                  url:"fetch.php",
                  method:"POST",
                  data:{st_id:st_id},
-                 dataType:"json",
                  success:function(data){
-                     // console.log(data);
-                     $('#id').val(data.id);
-                     $('#admno').text(data.admno);
-                     $('#course').text(data.course);
-                     $('#year').text(data.year);
-                     $('#last_name').text(data.last_name);
-                     $('#first_name').text(data.first_name);
-                     $('#middle_name').text(data.middle_name);
-                     $('#bday').text(data.bday);
-                     $('#age').text(data.age);
-                     $('#gender').text(data.gender);
-                     $('#contact_number').text(data.contact_number);
-                     $('#contact_person').text(data.contact_person);
+                     $('#edit_student').html(data);
+                     $('#studentModal').modal("show");
                  }
              });
          });

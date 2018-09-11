@@ -31,7 +31,10 @@ body{
     color:red !important;
 
 }
+.navbar-brand{
 
+    color:#FFFFFF;
+}
 
 .caret-up {
     width: 0;
