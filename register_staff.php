@@ -5,6 +5,11 @@ include 'includes/navbar.php';
 ?>
 
 <div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8">
+        </div>
+        <?php include 'clock.php';?>
+    </div>
     <div class="card mt-3">
         <h5 class="card-header text-center">Staff/ Employee Registration Form</h5>
         <div class="card-body">
