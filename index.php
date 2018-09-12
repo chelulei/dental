@@ -24,11 +24,11 @@
            <img src="images/ban.png" class="img-fluid img-polaroid" alt="Responsive image" id="ban">
        </div>
        <!-- /.row -->
+        <?php include 'errors.php';?>
         <div class="row mt-4">
             <div class="col-md-4"></div>
             <!-- /.col-md-4 -->
             <div class="col-md-4">
-                <?php include 'errors.php';?>
                 <form  id="login_form" class="form-signin"  action="log_in.php" method="POST">
 
                         <h3 class="form-signin-heading"><i class="fa fa-lock"></i> Please Login</h3>
@@ -51,6 +51,18 @@
 <footer>
     <p class="text-center">All Rights Reserved 2018</p>
 </footer>
+<script>
+    //Remove alert
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
+    //clear URL
+    if(typeof window.history.pushState == 'function') {
+        window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF'];?>');
+    }
+</script>
 <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>

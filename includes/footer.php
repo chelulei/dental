@@ -174,7 +174,19 @@
 
          })
 
-
+         /*Edit users*/
+         $(document).on('click', '.ed_user', function(){
+             var user_id = $(this).attr("id");
+             $.ajax({
+                 url:"fetch.php",
+                 method:"POST",
+                 data:{user_id:user_id},
+                 success:function(data){
+                     $('#user').html(data);
+                     $('#userModal').modal("show");
+                 }
+             });
+         });
 
          /*show staff info*/
          $(document).on('click', '.staff_info', function(){

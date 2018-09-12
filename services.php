@@ -1,5 +1,4 @@
 <?php
-include('session.php'); 
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
@@ -20,8 +19,6 @@ include 'includes/navbar.php';
 	   </thead>
 	   <tbody>
 		<?php
-
-      include 'connect.php';
         
         $query="SELECT * FROM services";
        

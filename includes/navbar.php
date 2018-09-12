@@ -1,4 +1,10 @@
 
+<?php
+include 'connect.php';
+include 'functions.php';
+getUser();
+
+?>
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#" style="color: #FFFFFF;">NORSU</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,11 +21,11 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="schedules.php"><i class="fa fa-calendar-plus-o"></i> Schedules</a>
+                        <?php if ($level == 'admin'): ?>
                         <a class="dropdown-item" href="treatment.php"><i class="fa fa-user-md"></i> Students Treatment</a>
-                        <a class="dropdown-item" href="inventory.php"><i class="fa fa-suitcase"></i> Inventory</a>
+                        <?php endif;?>
                         <a class="dropdown-item" href="inventory.php"><i class="fa fa-suitcase"></i> Inventory</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="users.php"><i class="fa fa-users"></i> users</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -30,6 +36,9 @@
                         <a class="dropdown-item" href="students.php"><i class="fa fa-user" aria-hidden="true"></i> Students</a>
                         <a class="dropdown-item" href="staff.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Staff</a>
                         <div class="dropdown-divider"></div>
+                        <?php if ($level == 'admin'): ?>
+                        <a class="dropdown-item" href="users.php"><i class="fa fa-users"></i> users</a>
+                        <?php endif;?>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

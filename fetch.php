@@ -4,6 +4,68 @@ include 'connect.php';
 
 include 'functions.php';
 
+
+if(isset($_POST['user_id']))
+{
+    $output = '';
+
+    $user_id=$_POST['user_id'];
+
+    $sql = mysqli_query($con,"SELECT * FROM users WHERE user_id = '$user_id'");
+
+    while($row = mysqli_fetch_array($sql)) {
+        $output = '
+       <div class="col-md-3">'?>
+
+<!--        --><?php //include 'image.php';?>
+
+        </div>
+
+        <?php  $output .= ' 
+    <form action="update_user.php" method="post"  class="form-inline">
+    <div class="col-md-12" >     
+        <table class="table">
+                
+                    <tbody>
+                      <tr>
+                        <td>LastName</td>
+                        <td> <input type="text" name="last_name"  value="'.$row["last_name"].'"  class="form-control"/></td>
+                      </tr>
+                      <tr>
+                        <td>FirstName:</td>
+                        <td> <input type="text"  name="first_name"  value="'.$row["first_name"].'"   class="form-control"/></td>
+                      </tr>
+                        <tr>
+                        <td>MiddleName:</td>
+                        <td><input type="text"  name="middle_name"  value="'.$row["middle_name"].'" class="form-control"/></td>
+                        </tr>
+                        <tr>
+                        <td>Type:</td>
+                       <td><input type="text"  name="level"  value="'.$row["level"].'" class="form-control"/></td>
+                       </tr>
+                    </tbody>
+                  </table>
+                  <input type="hidden" name="user_id"  value="'.$row["user_id"].'"/> 
+                  <div class="btn-group text-center" role="group">
+                   <button type="button" class="btn btn-danger mr-3" data-dismiss="modal">
+                   <i class="fa fa-close"></i >Close</button>
+                    <button type="submit" name="update" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Save changes</button>
+                    
+                   </div>
+                  </form>
+                  </div>
+       <!-- /.col-md-12 -->
+                 
+
+';
+    }
+    echo $output;
+
+
+}
+
+
 if(isset($_POST['sc_id'])){
 
     $output = '';
@@ -16,10 +78,10 @@ if(isset($_POST['sc_id'])){
     while( $rm1= mysqli_fetch_array($rs)) {
         $output = '
      <form action="update_schedule.php" method="POST">
-       <input type="hidden" name="id" id="sch_id">
+       <input <input type="hidden" name="id" id="sch_id">
         <div class="form-group">
             <label for="">Search Student Name</label>
-           <input type="hidden" class="form-control"  value="'.$rm1["sch_id"].'"  name="id">
+           <input <input type="hidden" class="form-control"  value="'.$rm1["sch_id"].'"  name="id">
               <select name="student" id="student" class="form-control">
               '?>
         <?php
@@ -46,7 +108,7 @@ if(isset($_POST['sc_id'])){
                             <!-- /.form-group -->
                                 <div class="form-group">
                                     <label for="">Date</label>
-                                    <input type="date" name="date" value="'.$rm1["date"].'"  id="treatment"  class="form-control">
+                                    <input <input type="date" name="date" value="'.$rm1["date"].'"  id="treatment"  class="form-control">
                                     <!-- /# -->
                                 </div>
                              
@@ -59,8 +121,8 @@ if(isset($_POST['sc_id'])){
                                     </div>
                                     <!-- /.form-group -->
                                     <P class="text-center">
-                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
-                     <button type="submit" name="update" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                         <button <input type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+                     <button <input type="submit" name="update" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
                     </P>
                      </form>
                          ';
@@ -80,15 +142,18 @@ $sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$st_id'");
 
     while($row = mysqli_fetch_array($sql)) {
         $output = '
-       <div class="col-md-3">'?>
-
+           <table class="table">
+          <tr>
+            <td>
+       '?>
            <?php include 'image.php';?>
-
-        </div>
-
         <?php  $output .= ' 
-        <div class="col-md-9">
-          <input type="hidden" name="stud_id"  value="'.$row["id"].'"/>
+        </td>
+            </tr>
+            
+            <tr>
+            <td width="250px">
+          <input <input type="hidden" name="stud_id"  value="'.$row["id"].'"/>
             <b>Name:</b> '.$row["last_name"].' '.$row["first_name"].' '.$row["middle_name"].'<br>
             </hr>
             <b>Admin No:</b>  '.$row["admno"].'<br>
@@ -98,53 +163,18 @@ $sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$st_id'");
             <b>Course:</b> '.$row["course"].' <br>
             <b>Contact #:</b>  '.$row["contact_number"].'<br>
             <b>Contact Person:</b>'.$row["contact_person"].'<br>
-         </div>
-         <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td> <b>Personal Information: </b></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>patient name:</td>
-                        <td> Amir Mostafa</td>
-                      </tr>
-                      <tr>
-                        <td>Age:</td>
-                        <td>20</td>
-                      </tr>
-                   
-                         <tr>
-                             <tr>
-                        <td>Gender:</td>
-                        <td> M</td>
-                      </tr>
-                        <tr>
-                        <td>Address:</td>
-                        <td>cairo</td>
-                      </tr>
-                      <tr>
-                        <td>Mobile:</td>
-                        <td>555555</td>
-                      </tr>
-                        <td>Job:</td>
-                        <td> h </td>
-                           
-                      </tr>
-                     
-                       </tr>
-                        <td>Marital Status:</td>
-                        <td> s </td>
-                    </tbody>
-                  </table>
-
-';
+               </td>
+        </tr>
+        </tbody>
+        </table>
+        ';
     }
     echo $output;
 
 
 }
+
+
 
 
 if(isset($_POST['stf_id']))
@@ -159,7 +189,7 @@ $cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
 
   while($rows = mysqli_fetch_array($cat)) {
         $output = '
-    <table style="border: none; width: 100%;">
+    <table class="table">
         <tbody>
           <tr>
             <td>
@@ -171,7 +201,7 @@ $cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
             
             <tr>
             <td width="250px">
-                <input type="hidden" name="id" value="'.$rows["id"].'">
+                <input <input type="hidden" name="id" value="'.$rows["id"].'">
                 <b>Name:</b> '.$rows["last_name"].'  '.$rows["first_name"].' '.$rows["middle_name"].'<br>
                 <b>Admin No:</b> '.$rows["staff_no"].'<br>
                 <b>Birthday:</b>'.$rows["bday"].'<br>
@@ -182,7 +212,7 @@ $cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
             </td>
         </tr>
         </tbody>
-
+      </table> 
 ';
     }
     echo $output;
@@ -226,16 +256,16 @@ $grp= mysqli_query($con,"SELECT * FROM inventory WHERE inv_id = '$inv_id'");
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Item ID</label>
-                        <input type="number"  name="item_id" class="form-control" value="'.$rs["inv_id"].'">
+                        <input <input type="number"  name="item_id" class="form-control" value="'.$rs["inv_id"].'">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Name</label>
-                        <input type="text" class="form-control" name="item" id="item" value="'.$rs["item"].'">
+                        <input <input type="text" class="form-control" name="item" id="item" value="'.$rs["item"].'">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">How many</label>
-                    <input type="number" class="form-control" name="quantity" id="quantity" placeholder="quantity">
+                    <input <input type="number" class="form-control" name="quantity" id="quantity" placeholder="quantity">
                 </div>
             </div>
 
@@ -257,22 +287,22 @@ if(isset($_POST['qty_id']))
         $output = '
      <div class="form-row">
                 <div class="form-group col-md-4">
-            <input type="hidden"   name="item_id" class="form-control" value="'.$rt["inv_id"].'">  
+            <input <input type="hidden"   name="item_id" class="form-control" value="'.$rt["inv_id"].'">  
                     <label for="inputEmail4">Item ID</label>
-                    <input type="text"   name="item_id" class="form-control" value="'.$rt["inv_id"].'" readonly>
+                    <input <input type="text"   name="item_id" class="form-control" value="'.$rt["inv_id"].'" readonly>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputPassword4">Name</label>
-                    <input type="text" class="form-control" name="item" value="'.$rt["item"].'" readonly>
+                    <input <input type="text" class="form-control" name="item" value="'.$rt["item"].'" readonly>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputPassword4">Current Quantity</label>
-                    <input type="text"  class="form-control"  value="'.$rt["quantity"].'"readonly>
+                    <input <input type="text"  class="form-control"  value="'.$rt["quantity"].'"readonly>
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Add Quantity</label>
-                <input type="number" class="form-control" name="qty" id="quantity" placeholder="quantity">
+                <input <input type="number" class="form-control" name="qty" id="quantity" placeholder="quantity">
             </div>';
    }
     echo $output;
@@ -289,12 +319,12 @@ if(isset($_POST['sv_id'])){
 
     while( $rm= mysqli_fetch_array($treat)) {
         $output = '
-         <input type="hidden" name="id" id="sch_id">
+         <input <input type="hidden" name="id" id="sch_id">
                         <!-- /.row -->
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Search Student Name</label>
-                               <input type="hidden" class="form-control"  value="'.$rm["t_id"].'"  name="id">
+                               <input <input type="hidden" class="form-control"  value="'.$rm["t_id"].'"  name="id">
                                   <select name="student" id="student" class="form-control">
                                   '?>
                                    <?php
@@ -321,7 +351,7 @@ if(isset($_POST['sv_id'])){
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label for="">Tooth</label>
-                                <input type="text" name="tooth" value="'.$rm["tooth"].'" id="tooth" class="form-control">
+                                <input <input type="text" name="tooth" value="'.$rm["tooth"].'" id="tooth" class="form-control">
                                 <!-- /# -->
                             </div>
                             <!-- /.form-group -->
@@ -329,7 +359,7 @@ if(isset($_POST['sv_id'])){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Treatment</label>
-                                        <input type="text" name="treatment" value="'.$rm["treatment"].'" id="treatment"  class="form-control">
+                                        <input <input type="text" name="treatment" value="'.$rm["treatment"].'" id="treatment"  class="form-control">
                                         <!-- /# -->
                                     </div>
                                     <!-- /.form-group -->
@@ -338,7 +368,7 @@ if(isset($_POST['sv_id'])){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Status</label>
-                                        <input type="text" value="'.$rm["status"].'" name="status" id="status" class="form-control">
+                                        <input <input type="text" value="'.$rm["status"].'" name="status" id="status" class="form-control">
                                         <!-- /# -->
                                     </div>
                                     <!-- /.form-group -->
@@ -356,7 +386,7 @@ if(isset($_POST['sv_id'])){
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label for="">Dr. Name</label>
-                                <input type="text" name="doctor"  value="'.$rm["doctor"].'"  id="doctor" class="form-control">
+                                <input <input type="text" name="doctor"  value="'.$rm["doctor"].'"  id="doctor" class="form-control">
                                 <!-- /# -->
                                 <!-- /# -->
                             </div>
@@ -374,17 +404,17 @@ if(isset($_POST['p_id']))
 
     while( $row3= mysqli_fetch_array($product)) {
         $output = '
-             <input type="hidden" name="id" id="id" value="'.$row3["inv_id"].'">
+             <input <input type="hidden" name="id" id="id" value="'.$row3["inv_id"].'">
                         <!-- /.row -->
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="item" value="'.$row3["item"].'" class="form-control">
+                                <input <input type="text" name="item" value="'.$row3["item"].'" class="form-control">
                                 <!-- /# -->
                             </div>
                                     <div class="form-group">
                                         <label for="">Quantity</label>
-                                        <input type="number" name="quantity" value="'.$row3["quantity"].'"  class="form-control">
+                                        <input <input type="number" name="quantity" value="'.$row3["quantity"].'"  class="form-control">
                                         <!-- /# -->
                                     </div>
 
@@ -508,7 +538,7 @@ if(isset($_POST["inf_id"]))
             var image = $('#fileInput').val();
             var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
-            //validate file type
+            //validate file <input type
             if(!img_ex.exec(image)){
                 alert('Please upload only .jpg/.jpeg/.png/.gif file.');
                 $('#fileInput').val('');

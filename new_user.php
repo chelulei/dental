@@ -8,7 +8,7 @@ if (isset($_POST['save'])) {
     $type=mysqli_escape_string($con,$_POST['type']);
     $username= $last_name;
     $password= $last_name;
- $sql = "INSERT INTO users (username,password,type,last_name,first_name, middle_name,image,date) 
+ $sql = "INSERT INTO users (username,password,level,last_name,first_name, middle_name,image,date) 
 VALUES ('$username','$password','$type','$last_name','$first_namer','$middle_name','default.png',NOW())";
 
     $run=mysqli_query($con,$sql);

@@ -14,7 +14,7 @@ if(isset($_POST['login'])) {
 
 
     $result = mysqli_query($con, "SELECT*FROM users WHERE username='$username' AND password='$password'");
-    $row = mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_array($result);
     $count = mysqli_num_rows($result);
 
 if ($count > 0) {
@@ -24,7 +24,7 @@ if ($count > 0) {
 
     }else{
 
-    header('location:login.php?error=Your PassWord or UserName is not Found');
+    header('location:index.php?error=Your PassWord or UserName is not Found');
 
 }
 

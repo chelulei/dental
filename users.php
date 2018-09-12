@@ -1,14 +1,12 @@
 
 <?php
-include 'connect.php';
-include 'functions.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
 <div class="container">
     <div class="row mt-3 ml-1">
         <div class="col-md-8">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usersModal">
                 <i class="fa fa-plus"></i> ADD USERS
             </button>
         </div>
@@ -42,7 +40,7 @@ include 'includes/navbar.php';
 
                                 <td><?php echo ucfirst($row['username']);?></td>
                                 <td><?php echo ucfirst($row['last_name'].' '.$row['first_name'].' '.$row['middle_name']);?></td>
-                                <td><?php echo ucfirst($row['type']);?></td>
+                                <td><?php echo ucfirst($row['level']);?></td>
                                 <td>
                                     <!-- /.btn btn-group -->
                                     <button type="button" id="<?php echo $row['user_id'];?>"
@@ -69,11 +67,11 @@ include 'includes/navbar.php';
 include 'includes/footer.php';
 ?>
 <!-- Modal -->
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+<div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="usersModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center d-block " id="userModalLabel">
+                <h5 class="modal-title text-center d-block " id="usersModalLabel">
                     ADD USER
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -98,8 +96,9 @@ include 'includes/footer.php';
                         <div class="form-group">
                         <label for="userInputEmail1">Level</label>
                         <select name="type" class="form-control" id="">
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
+                            <option value="">---Select Level--</option>
+                            <option value="2">User</option>
+                            <option value="1">Admin</option>
                         </select>
                         <!-- /# -->
                     </div>

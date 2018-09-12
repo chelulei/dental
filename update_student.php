@@ -32,7 +32,7 @@ if (isset($_POST['update'])) {
         );
 
         $query = http_build_query($query);
-       // header("Location:edit_student.php?$query");
+        header("Location:edit_student.php?$query");
     }
 }
 ?>

@@ -22,7 +22,7 @@ $userPictureURL = 'images/avatar/'.$userPicture;
         <a class="editLink" href="javascript:void(0);"><img src="images/edit.png"/></a>
         <!-- Profile image -->
         <div class="text-center">
-            <img src="<?php echo $userPictureURL; ?>" class="rounded" id="imagePreview">
+            <img src="<?php echo $userPictureURL; ?>" class="rounded mx-auto d-block" id="imagePreview">
         </div>
     </div>
 </div>

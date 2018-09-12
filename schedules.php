@@ -1,7 +1,6 @@
 
 <?php
 include 'connect.php';
-include 'functions.php';
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>

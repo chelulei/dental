@@ -1,4 +1,6 @@
-<?php include  'session.php';  ?>
+<?php
+include  'session.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +19,13 @@
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/sweetalert.min.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/image.css">
     <link rel="stylesheet" href="select2/select2.min.css">
     <script src="tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
+
+
 
 

@@ -14,10 +14,13 @@
             <form action="edit_staff.php" method="post">
 
             <div class="modal-body">
-                    <div class="row" id="edit_staff">
-
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-8">
+                        <div id="edit_staff"></div>
                     </div>
-                    <!-- /#edit_staff -->
+                    <div class="col-md-1"></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger btn-bl" data-dismiss="modal"><i class="fa fa-close"></i>CLOSE</button>
