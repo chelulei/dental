@@ -44,6 +44,8 @@ include 'includes/navbar.php';
                     </div>
                     <!-- /.col-md-4 -->
             </div>
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-md-4">
@@ -87,11 +89,13 @@ include 'includes/navbar.php';
                         <input type="text" name="contact_no" class="form-control" id="exampleInputEmail1"
                                placeholder="Contact Number" required>
                     </div>
+                </div>
+                <div class="col-md-4">
                     <div class="form-group">
+                        <label for="exampleInputEmail1"></label>
                         <button type="submit" name="save" class="btn btn-primary btn-block"><i class="fa fa-save"> SAVE</i></button>
                     </div>
                 </div>
-                <!-- /.col-md-4 -->
             </div>
             <!-- /.row -->
             </form>

@@ -17,7 +17,9 @@
                         <a class="dropdown-item" href="schedules.php"><i class="fa fa-calendar-plus-o"></i> Schedules</a>
                         <a class="dropdown-item" href="treatment.php"><i class="fa fa-user-md"></i> Students Treatment</a>
                         <a class="dropdown-item" href="inventory.php"><i class="fa fa-suitcase"></i> Inventory</a>
+                        <a class="dropdown-item" href="inventory.php"><i class="fa fa-suitcase"></i> Inventory</a>
                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="users.php"><i class="fa fa-users"></i> users</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -45,7 +47,7 @@
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href=""  data-toggle="modal" data-target="#logModal">Logout</a>
+                        <a class="dropdown-item" href=""  data-toggle="modal" data-target="#logModal"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                     </div>
                 </li>
 

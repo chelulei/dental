@@ -16,11 +16,10 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/sweetalert.min.css">
-    <link rel="stylesheet" href="assets/css/image.css"
-    <link rel="stylesheet" href="assets/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="select2/select2.min.css">
     <script src="tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
-    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
 

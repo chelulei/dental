@@ -9,7 +9,7 @@ include 'includes/navbar.php';
     <div class="row mt-3 ml-1">
         <div class="col-md-8">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i> ADD SCHEDULE
+                <i class="fa fa-plus"></i> ADD USERS
             </button>
         </div>
         <!-- /.col-md-4 -->
@@ -18,56 +18,48 @@ include 'includes/navbar.php';
     <br>
     <?php include 'errors.php';?>
     <div class="card">
-        <h5 class="card-header text-center">Schedules List</h5>
+        <h5 class="card-header text-center">Users List</h5>
         <div class="card-body">
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-bordered" id="myTable">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Notes</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                $query = "SELECT * FROM `schedules` s JOIN students st ON(s.student_id=st.id)";
-                $run= mysqli_query($con,$query);
-                while($row =mysqli_fetch_array($run)):
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered" id="myTable">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $query = "SELECT * FROM `users`";
+                        $run= mysqli_query($con,$query);
+                        while($row =mysqli_fetch_array($run)):
 
-                    ?>
-                    <tr>
+                            ?>
+                            <tr>
 
-                        <td><?php echo $row['first_name'].' '.$row['last_name'].' '.$row['middle_name'];?></td>
-                        <td><?php echo formatDate($row['date']);?></td>
-                        <td>
-                            <label><a href="#" class="hover_sc" id="<?php echo $row["sch_id"]; ?>">
-                                    <?php echo strip_tags(substr($row['notes'],0,200)); ?></a>
-                            </label>
-                        </td>
-                        <td>
-                                <!-- /.btn btn-group -->
-                                <button type="button" id="<?php echo $row['sch_id'];?>"
-                                        class="btn btn-outline-primary ed_sc">
-                                    <i class="fa fa-pencil-square" aria-hidden="true"></i> EDIT</button>
-                                <a href="delete_schedule.php?delete=<?php echo $row['sch_id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
-                                <!-- /.btn bt-group -->
+                                <td><?php echo $row['username'];?></td>
+                                <td>
+                                    <!-- /.btn btn-group -->
+                                    <button type="button" id="<?php echo $row['user_id'];?>"
+                                            class="btn btn-outline-primary ed_sc">
+                                        <i class="fa fa-pencil-square" aria-hidden="true"></i> EDIT</button>
+                                    <a href="delete_schedule.php?delete=<?php echo $row['user_id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
+                                    <!-- /.btn bt-group -->
 
-                        </td>
-                        <?php include 'edit_modal.php';?>
-                    </tr>
-                <?php endwhile;?>
-                </tbody>
-        </div>
-        <!-- /.col-md-12 -->
-    </div>
-    <!-- /.row -->
+                                </td>
+                                <?php include 'edit_modal.php';?>
+                            </tr>
+                        <?php endwhile;?>
+                        </tbody>
+                </div>
+                <!-- /.col-md-12 -->
+            </div>
+            <!-- /.row -->
         </div>
     </div>
 
-  </div>
+</div>
 <!--<div class="wrapper h-100"></div>-->
 <?php
 include 'includes/footer.php';
@@ -98,14 +90,14 @@ include 'includes/footer.php';
                                     $runs= mysqli_query($con,$sql);
                                     while ($rows= mysqli_fetch_array($runs)) {
                                         ?>
-                                      <option value="<?php echo $rows['id'];?>">
-                                          <?php echo $rows['last_name'].' '.$rows['first_name'].' '.$rows['middle_name'];?>
-                                      </option>
-                                   <?php }
+                                        <option value="<?php echo $rows['id'];?>">
+                                            <?php echo $rows['last_name'].' '.$rows['first_name'].' '.$rows['middle_name'];?>
+                                        </option>
+                                    <?php }
                                     ?>
 
                                 </select>
-                               <!-- /# -->
+                                <!-- /# -->
                             </div>
 
                         </div>
@@ -137,8 +129,13 @@ include 'includes/footer.php';
                     <i class="fa fa-save"></i> Save changes
                 </button>
             </div>
-        </form
+            </form
         </div>
     </div>
 </div>
+
+
+
+
+
 

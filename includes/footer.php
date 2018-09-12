@@ -40,8 +40,8 @@
                 <h5 class="text-danger text-center">Are you sure you want to log out?</h5>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">NO</button>
-                <a href="logout.php"><button type="button" class="btn btn-primary btn-lg">YES</button></a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> NO</button>
+                <a href="logout.php"><button type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> YES</button></a>
             </div>
         </div>
     </div>
@@ -55,11 +55,9 @@
 <script src="assets/js/lib/data-table/dataTables.bootstrap4.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/bootstrap-select/js/bootstrap-select.min.js"></script>
 <script src="assets/js/sweetalert.min.js"></script>
  <script>
      jQuery( document ).ready(function( $ ) {
-
      //     /*menu hover*/
          $(".dropdown").hover(
              function() {

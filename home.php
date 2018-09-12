@@ -10,7 +10,7 @@ include 'includes/navbar.php';
         <div class="col-md-8">
         </div>
         <!-- /.col-md-8 -->
-        <?php include 'clock.php';?>
+         <?php include 'clock.php';?>
     </div>
     <div class="row mt-2">
         <div class="col-md-4">
@@ -25,8 +25,8 @@ include 'includes/navbar.php';
             <p>Saturday(half day)</p>
 
         </div>
-        <div class="col-md-8 border border-primary">
-
+        <div class="col-md-8 border border-dark">
+                 <img src="images/teeth.png" class="rounded mx-auto d-block" alt="">
         </div>
     </div>
 

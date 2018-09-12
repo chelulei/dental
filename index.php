@@ -21,7 +21,7 @@
 </nav>
     <div class="container">
        <div class="row">
-<!--           <img src="images/ban.png" class="img-fluid img-polaroid" alt="Responsive image" id="ban">-->
+           <img src="images/ban.png" class="img-fluid img-polaroid" alt="Responsive image" id="ban">
        </div>
        <!-- /.row -->
         <div class="row mt-4">
