@@ -42,11 +42,11 @@ include 'includes/navbar.php';
                 $run= mysqli_query($con,$query);
                 while($row =mysqli_fetch_array($run)):
                     ?>
-                        <td><?php echo $row['admno'];?></td>
-                        <td><?php echo $row['last_name'];?></td>
-                        <td><?php echo $row['first_name'];?></td>
-                        <td><?php echo $row['middle_name'];?></td>
-                         <td><?php echo $row['course'];?></td>
+                        <td><?php echo ucfirst($row['admno']);?></td>
+                        <td><?php echo ucfirst($row['last_name']);?></td>
+                        <td><?php echo ucfirst($row['first_name']);?></td>
+                        <td><?php echo ucfirst($row['middle_name']);?></td>
+                         <td><?php echo ucfirst($row['course']);?></td>
                         <td>
                             <button type="button" class="btn btn-outline-primary stud_info"  id="<?php echo $row['id'];?>">
                                 <i class="fa fa-search"></i> VIEW DETAILS

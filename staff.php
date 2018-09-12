@@ -42,9 +42,9 @@ include 'includes/navbar.php';
                 ?>
                 <tr>
                     <td><?php echo $row['staff_no'];?></td>
-                    <td><?php echo $row['last_name'];?></td>
-                    <td><?php echo $row['first_name'];?></td>
-                    <td><?php echo $row['middle_name'];?></td>
+                    <td><?php echo ucfirst($row['last_name']);?></td>
+                    <td><?php echo ucfirst($row['first_name']);?></td>
+                    <td><?php echo ucfirst($row['middle_name']);?></td>
                     <td><?php echo $row['department'];?></td>
                     <td><?php echo $row['gender'];?></td>
                     <td>

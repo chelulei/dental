@@ -8,7 +8,7 @@ include 'includes/navbar.php';
 <div class="container">
     <div class="row mt-3 ml-1">
         <div class="col-md-8">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
                 <i class="fa fa-plus"></i> ADD USERS
             </button>
         </div>
@@ -25,7 +25,9 @@ include 'includes/navbar.php';
                     <table class="table table-bordered" id="myTable">
                         <thead>
                         <tr>
+                            <th>Username</th>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -38,13 +40,15 @@ include 'includes/navbar.php';
                             ?>
                             <tr>
 
-                                <td><?php echo $row['username'];?></td>
+                                <td><?php echo ucfirst($row['username']);?></td>
+                                <td><?php echo ucfirst($row['last_name'].' '.$row['first_name'].' '.$row['middle_name']);?></td>
+                                <td><?php echo ucfirst($row['type']);?></td>
                                 <td>
                                     <!-- /.btn btn-group -->
                                     <button type="button" id="<?php echo $row['user_id'];?>"
-                                            class="btn btn-outline-primary ed_sc">
+                                            class="btn btn-outline-primary ed_user">
                                         <i class="fa fa-pencil-square" aria-hidden="true"></i> EDIT</button>
-                                    <a href="delete_schedule.php?delete=<?php echo $row['user_id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
+                                    <a href="delete_user.php?delete=<?php echo $row['user_id'];?>" class="btn btn-outline-danger delete_link"><i class="fa fa-trash-o"></i>DETE</a>
                                     <!-- /.btn bt-group -->
 
                                 </td>
@@ -65,12 +69,12 @@ include 'includes/navbar.php';
 include 'includes/footer.php';
 ?>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center d-block " id="exampleModalLabel">
-                    ADD SCHEDULE
+                <h5 class="modal-title text-center d-block " id="userModalLabel">
+                    ADD USER
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -78,50 +82,28 @@ include 'includes/footer.php';
             </div>
 
             <div class="modal-body">
-                <form role="form" id="form" action="new_schedule.php" method="POST">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group ui-front">
-                                <label for="">Name</label>
-                                <select class="form-control" id="select2-single-box" name="select2-single-box"
-                                        data-placeholder="Pick your choice" data-tabindex="1">
-                                    <?php
-                                    $sql="SELECT * FROM students";
-                                    $runs= mysqli_query($con,$sql);
-                                    while ($rows= mysqli_fetch_array($runs)) {
-                                        ?>
-                                        <option value="<?php echo $rows['id'];?>">
-                                            <?php echo $rows['last_name'].' '.$rows['first_name'].' '.$rows['middle_name'];?>
-                                        </option>
-                                    <?php }
-                                    ?>
-
-                                </select>
-                                <!-- /# -->
-                            </div>
-
-                        </div>
-                        <!-- /.col-md-4 -->
-                        <div class="col-md-6">
+                <form role="form" id="form" action="new_user.php" method="POST">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Date</label>
-                                <input type="date"  name="date"  class="form-control"  placeholder="Date" required>
+                                <label for="userInputEmail1">LastName</label>
+                                <input type="text"  name="last_name"  class="form-control"  placeholder="LastName" required>
                             </div>
-                        </div>
-                        <!-- /.col-md-4 -->
-                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Notes</label>
-                                <textarea class="form-control" rows="3" name="notes">
-
-                                </textarea>
-                                <!-- /# -->
+                                <label for="userInputEmail1">FirstName</label>
+                                <input type="text"  name="first_name"  class="form-control"  placeholder="FirstName" required>
                             </div>
-                        </div>
-                        <!-- /.col-md-8 -->
+                            <div class="form-group">
+                                <label for="userInputEmail1">MiddleName</label>
+                                <input type="text"  name="middle_name"  class="form-control"  placeholder="MiddleName" required>
+                            </div>
+                        <div class="form-group">
+                        <label for="userInputEmail1">Level</label>
+                        <select name="type" class="form-control" id="">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <!-- /# -->
                     </div>
-                    <!-- /.row -->
-            </div>
+                  </div>
             <div class="modal-footer">
                 <input type="hidden" name="student_id" value="">
                 <button  class="btn btn-danger"  type="submit" name="save" data-dismiss="modal"><i class="fa fa-close"></i> CANCEL</button>
