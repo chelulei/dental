@@ -22,6 +22,16 @@ if (isset($_POST['update'])) {
 ?>
 
 <div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <a href="staff.php"><button type="button" class="btn btn-primary">
+                    <i class="fa fa-arrow-left"></i> BACK
+                </button></a>
+        </div>
+        <!-- /.col-md-8 -->
+
+        <?php include 'clock.php';?>
+    </div>
     <div class="card mt-3">
         <h5 class="card-header text-center">Edit Employee Registration Form</h5>
         <div class="card-body">

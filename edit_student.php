@@ -26,9 +26,18 @@ if (isset($_POST['update'])) {
 
 
 <div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <a href="students.php"><button type="button" class="btn btn-primary">
+                    <i class="fa fa-arrow-left"></i> BACK
+                </button></a>
+        </div>
+        <!-- /.col-md-8 -->
 
+        <?php include 'clock.php';?>
+    </div>
+    <?php include 'errors.php'; ?>
     <div class="card mt-4">
-        <?php include 'errors.php'; ?>
         <strong><h4 class="card-header"> Edit Students' Details</h4></strong>
         <div class="card-body">
     <!-- /.row -->

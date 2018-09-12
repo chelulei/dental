@@ -48,7 +48,3 @@ body{
     vertical-align: middle;
 }
 
-body.modal-open {
-    margin-right: 0 !important;
-    padding-right: 8px !important;
-}

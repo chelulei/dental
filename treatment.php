@@ -113,8 +113,40 @@ include 'includes/footer.php';
                          <hr>
                          <div class="form-group">
                              <label for="">Tooth</label>
-                             <input type="text" name="tooth" id="" class="form-control">
-                             <!-- /# -->
+                             <select name="tooth" id="" class="form-control">
+                             <option value="1-1">1-1 Incisors</option>
+                             <option value="1-2">1-2 lateral incisors</option>
+                             <option value="1-3">1-3 canine</option>
+                             <option value="1-4">1-4 premola</option>
+                             <option value="1-5">1-5 premola</option>
+                             <option value="1-6">1-6 mola</option>
+                             <option value="1-7">1-7 mola</option>
+                             <option value="1-8">1-8 3rd mola (wisdom teeth)</option>
+                             <option value="2-1">2-1 Incisors </option>
+                             <option value="2-2">2-2 lateral incisors  </option>
+                             <option value="2-3">2-4 canine</option>
+                             <option value="2-4">2-4 premola </option>
+                             <option value="2-5">2-5 premola </option>
+                             <option value="2-6">2-6 mola </option>
+                             <option value="2-7">2-7 mola </option>
+                             <option value="2-8">2-8 3rd mola(wisdom teeth)</option>
+                             <option value="3-1">3-1 Incisors </option>
+                             <option value="3-2">3-2 lateral incisors</option>
+                             <option value="3-3">3-3 canine</option>
+                             <option value="3-4">3-4 premola</option>
+                             <option value="3-5">3-5 premola</option>
+                             <option value="3-6">3-6 mola</option>
+                             <option value="3-7">3-7 mola</option>
+                             <option value="3-8">3-8 3rd mola(wisdom teeth)</option>
+                             <option value="4-1">4-1 Incisors</option>
+                             <option value="4-2">4-2 lateral incisors</option>
+                             <option value="4-3">4-3 canine</option>
+                             <option value="4-4">4-4 premola</option>
+                             <option value="4-5">4-5 premola</option>
+                             <option value="4-6">4-6 mola</option>
+                             <option value="4-7">4-7 mola</option>
+                             <option value="4-8">4-8 3rd mola(wisdom teeth) </option>
+                             </select>
                          </div>
                          <!-- /.form-group -->
                          <div class="row">

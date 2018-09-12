@@ -80,7 +80,7 @@ if(isset($_POST['sc_id'])){
      <form action="update_schedule.php" method="POST">
        <input <input type="hidden" name="id" id="sch_id">
         <div class="form-group">
-            <label for="">Search Student Name</label>
+            <label for="">Student Name</label>
            <input <input type="hidden" class="form-control"  value="'.$rm1["sch_id"].'"  name="id">
               <select name="student" id="student" class="form-control">
               '?>
@@ -114,7 +114,7 @@ if(isset($_POST['sc_id'])){
                              
                                     <div class="form-group">
                                         <label for="">Notes</label>
-                                         <textarea name="notes" id="" cols="10"  rows="10" class="form-control">
+                                         <textarea name="notes" id="" cols="10"  rows="15" class="form-control">
                                         '.strip_tags($rm1["notes"]).'
                                           </textarea>
                                         <!-- /# -->
@@ -378,7 +378,7 @@ if(isset($_POST['sv_id'])){
 
                             <div class="form-group">
                                 <label for="">Notes</label>
-                                <textarea name="notes" id="notes"  rows="5" class="form-control">
+                                <textarea name="notes" id="notes" rows="10"  cols="15" class="form-control">
                                     '.strip_tags($rm["notes"]).'
                                  </textarea>
                                 <!-- /# -->

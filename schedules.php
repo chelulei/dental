@@ -90,8 +90,8 @@ include 'includes/footer.php';
                         <div class="col-md-6">
                             <div class="form-group ui-front">
                                 <label for="">Name</label>
-                                <select class="form-control" id="select2-single-box" name="select2-single-box"
-                                        data-placeholder="Pick your choice" data-tabindex="1">
+                                <select class="form-control" name="student" required>
+                                    <option value="">--Select Student--</option>
                                     <?php
                                     $sql="SELECT * FROM students";
                                     $runs= mysqli_query($con,$sql);
