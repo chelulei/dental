@@ -25,7 +25,7 @@ include 'includes/navbar.php';
                         <tr>
                             <th>Username</th>
                             <th>Name</th>
-                            <th>Type</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -40,7 +40,7 @@ include 'includes/navbar.php';
 
                                 <td><?php echo ucfirst($row['username']);?></td>
                                 <td><?php echo ucfirst($row['last_name'].' '.$row['first_name'].' '.$row['middle_name']);?></td>
-                                <td><?php echo ucfirst($row['level']);?></td>
+                                <td><?php echo ucfirst($row['role']);?></td>
                                 <td>
                                     <!-- /.btn btn-group -->
                                     <button type="button" id="<?php echo $row['user_id'];?>"
@@ -94,11 +94,11 @@ include 'includes/footer.php';
                                 <input type="text"  name="middle_name"  class="form-control"  placeholder="MiddleName" required>
                             </div>
                         <div class="form-group">
-                        <label for="userInputEmail1">Level</label>
-                        <select name="type" class="form-control" id="">
-                            <option value="">---Select Level--</option>
-                            <option value="2">User</option>
-                            <option value="1">Admin</option>
+                        <label for="userInputEmail1">Role</label>
+                        <select name="role" class="form-control" id="">
+                            <option value="">---Select Role--</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
                         </select>
                         <!-- /# -->
                     </div>

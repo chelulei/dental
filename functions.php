@@ -18,7 +18,7 @@ function getUser()
     $row=mysqli_fetch_array( $get_user);
     $user_id=$row['user_id'];
     $user_name=$row['username'];
-    $level=$row['level'];
+    $level=$row['role'];
 
 }
 

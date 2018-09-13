@@ -21,11 +21,11 @@ if(isset($_POST['user_id']))
 
         </div>
 
-        <?php  $output .= ' 
+        <?php  $output .= '
     <form action="update_user.php" method="post"  class="form-inline">
-    <div class="col-md-12" >     
+    <div class="col-md-12" >
         <table class="table">
-                
+
                     <tbody>
                       <tr>
                         <td>LastName</td>
@@ -41,22 +41,22 @@ if(isset($_POST['user_id']))
                         </tr>
                         <tr>
                         <td>Type:</td>
-                       <td><input type="text"  name="level"  value="'.$row["level"].'" class="form-control"/></td>
+                       <td><input type="text"  name="role"  value="'.$row["role"].'" class="form-control"/></td>
                        </tr>
                     </tbody>
                   </table>
-                  <input type="hidden" name="user_id"  value="'.$row["user_id"].'"/> 
+                  <input type="hidden" name="user_id"  value="'.$row["user_id"].'"/>
                   <div class="btn-group text-center" role="group">
                    <button type="button" class="btn btn-danger mr-3" data-dismiss="modal">
                    <i class="fa fa-close"></i >Close</button>
                     <button type="submit" name="update" class="btn btn-primary">
                     <i class="fa fa-save"></i> Save changes</button>
-                    
+
                    </div>
                   </form>
                   </div>
        <!-- /.col-md-12 -->
-                 
+
 
 ';
     }
@@ -102,7 +102,7 @@ if(isset($_POST['sc_id'])){
         endwhile;
         ?>
 
-        <?php  $output .= ' 
+        <?php  $output .= '
                             </select>
                             </div>
                             <!-- /.form-group -->
@@ -111,7 +111,7 @@ if(isset($_POST['sc_id'])){
                                     <input <input type="date" name="date" value="'.$rm1["date"].'"  id="treatment"  class="form-control">
                                     <!-- /# -->
                                 </div>
-                             
+
                                     <div class="form-group">
                                         <label for="">Notes</label>
                                          <textarea name="notes" id="" cols="10"  rows="15" class="form-control">
@@ -147,10 +147,10 @@ $sql = mysqli_query($con,"SELECT * FROM students WHERE id = '$st_id'");
             <td>
        '?>
            <?php include 'image.php';?>
-        <?php  $output .= ' 
+        <?php  $output .= '
         </td>
             </tr>
-            
+
             <tr>
             <td width="250px">
           <input <input type="hidden" name="stud_id"  value="'.$row["id"].'"/>
@@ -195,10 +195,10 @@ $cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
             <td>
            <?php
             '; include 'image-teach.php';?>
-           <?php  $output .= ' 
+           <?php  $output .= '
             </td>
             </tr>
-            
+
             <tr>
             <td width="250px">
                 <input <input type="hidden" name="id" value="'.$rows["id"].'">
@@ -212,7 +212,7 @@ $cat = mysqli_query($con,"SELECT * FROM staff WHERE id = '$sf_id'");
             </td>
         </tr>
         </tbody>
-      </table> 
+      </table>
 ';
     }
     echo $output;
@@ -245,12 +245,12 @@ $grp= mysqli_query($con,"SELECT * FROM inventory WHERE inv_id = '$inv_id'");
                             ?>
                             <?php $output .= "<option value='{$rows['id']}'}>
                          {$rows['last_name']} {$rows['first_name']} {$rows['middle_name']}
-                         
+
                     </option>";
                          endwhile;
                         ?>
 
-               <?php  $output .= ' 
+               <?php  $output .= '
                     </select>
                 </div>
                 <div class="form-row">
@@ -287,7 +287,7 @@ if(isset($_POST['qty_id']))
         $output = '
      <div class="form-row">
                 <div class="form-group col-md-4">
-            <input <input type="hidden"   name="item_id" class="form-control" value="'.$rt["inv_id"].'">  
+            <input <input type="hidden"   name="item_id" class="form-control" value="'.$rt["inv_id"].'">
                     <label for="inputEmail4">Item ID</label>
                     <input <input type="text"   name="item_id" class="form-control" value="'.$rt["inv_id"].'" readonly>
                 </div>
@@ -443,8 +443,8 @@ if(isset($_POST['p_id']))
 
      $res = mysqli_query($con, $histo);
 
-     $output .= '  
-      <div class="table-responsive">  
+     $output .= '
+      <div class="table-responsive">
            <table class="table table-bordered">
            <thead>
             <tr>
@@ -454,27 +454,27 @@ if(isset($_POST['p_id']))
                <th>Quantity</th>
             </tr>
           </thead>
-           
+
            ';
      if (mysqli_num_rows($res) > 0) {
          while ($row3 = mysqli_fetch_array($res)) {
              $output .= '
-                 <tr> 
+                 <tr>
                      <td>' . $row3["item"] . '</td>
                      <td>' . formatDate($row3["date"]) . '</td>
                      <td>' . $row3["last_name"] . ' ' . $row3["first_name"] . ' ' . $row3["middle_name"] . '</td>
-                     <td>' . $row3["qty"] . '</td>  
+                     <td>' . $row3["qty"] . '</td>
                 </tr>
                 ';
          }
 
      }else
      {
-         $output .= '<tr>  
-                          <td colspan="4">Data not Found</td>  
+         $output .= '<tr>
+                          <td colspan="4">Data not Found</td>
                      </tr>';
      }
-     $output .= '</table> 
+     $output .= '</table>
 
       </div>';
 

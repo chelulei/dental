@@ -8,14 +8,14 @@ if (isset($_POST['update'])) {
     $last_name=mysqli_escape_string($con,$_POST['last_name']);
     $first_name=mysqli_escape_string($con,$_POST['first_name']);
     $middle_name=mysqli_escape_string($con,$_POST['middle_name']);
-    $type=mysqli_escape_string($con,$_POST['level']);
+    $type=mysqli_escape_string($con,$_POST['role']);
         $username= $last_name;
         $password= $last_name;
    $update  = "UPDATE users SET  username='$username',password='$password',
-                     level='$type',
+                     role='$type',
                        last_name='$last_name',first_name='$first_name',
                        middle_name='$middle_name'
-                       
+
                  WHERE user_id='$id'";
              $run=mysqli_query($con,$update);
     if ($run){
